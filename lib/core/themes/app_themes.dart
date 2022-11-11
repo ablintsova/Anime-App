@@ -17,7 +17,7 @@ final appTheme = ThemeData(
     ),
   ),
   fontFamily: 'Montserrat',
-  scaffoldBackgroundColor: AppColors.white,
+  scaffoldBackgroundColor: AppColors.black0,//purple50,//.withOpacity(0.8),
   textTheme: const TextTheme(),
   textSelectionTheme: TextSelectionThemeData(
     cursorColor: AppColors.indigo800,
@@ -37,6 +37,7 @@ final appTheme = ThemeData(
   iconTheme: iconThemeData,
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     elevation: 12,
+    backgroundColor: AppColors.black100,
     selectedIconTheme: IconThemeData(
       color: AppColors.purple500!,
       size: 27,

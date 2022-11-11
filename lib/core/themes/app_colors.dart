@@ -26,5 +26,7 @@ class AppColors {
   static Color? purple300 = Colors.purple[300];
   static Color? purple200 = Colors.purple[200];
   static Color? purple100 = Colors.purple[100];
+  static Color? purple50 = Colors.purple[50];
+
   static Color? purpleAccent = Colors.purpleAccent;
 }

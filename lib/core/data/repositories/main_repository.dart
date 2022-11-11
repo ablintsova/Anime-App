@@ -16,7 +16,7 @@ class MainRepository {
     await getTopRatedAnime();
   }
 
-  Future<List<GenreModel>> getGenres() async {
+  Future<List<GenreModel>?> getGenres() async {
     return genres = await _apiProvider.getGenres();
   }
 
