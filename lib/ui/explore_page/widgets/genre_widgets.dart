@@ -4,6 +4,7 @@ import 'package:anime_app/core/themes/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/localization/l10n.dart';
 import '../blocs/genres/genres_bloc.dart';
 
 class GenreList extends StatelessWidget {
@@ -20,7 +21,7 @@ class GenreList extends StatelessWidget {
             : state is GenresAreEmpty
                 ? Center(
                     child: Text(
-                      "Hmm, I guess, anime is it's own genre...",
+                      S.of(context).emptyGenreListMessage,
                       style: AppTextStyle.s20w600.copyWith(
                         color: AppColors.purple500,
                       ),

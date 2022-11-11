@@ -3,6 +3,7 @@ import 'package:anime_app/core/themes/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../core/localization/l10n.dart';
 import '../../../core/models/AnimeModel.dart';
 import '../blocs/top_anime/top_anime_bloc.dart';
 
@@ -15,7 +16,7 @@ class TopAnimeListHeader extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
-          "Top Rated Anime",
+          S.of(context).topAnimeSectionTitle,
           style: AppTextStyle.s28w600.copyWith(color: AppColors.indigo900),
         ),
         GestureDetector(
@@ -23,7 +24,7 @@ class TopAnimeListHeader extends StatelessWidget {
             // TODO: go to full list
           },
           child: Text(
-            "See all",
+            S.of(context).seeAllButtonText,
             style: AppTextStyle.s18w500.copyWith(color: AppColors.indigo900),
           ),
         ),
@@ -46,7 +47,7 @@ class TopAnimeList extends StatelessWidget {
             : state is ListIsEmpty
                 ? Center(
                     child: Text(
-                      "Why do you even care about what other people think?",
+                      S.of(context).emptyTopAnimeListMessage,
                       style: AppTextStyle.s20w600.copyWith(
                         color: AppColors.purple500,
                       ),

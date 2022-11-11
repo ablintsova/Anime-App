@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../core/injector/injector.dart';
+import '../../core/localization/l10n.dart';
 import '../../core/themes/app_colors.dart';
 import '../../core/themes/app_text_style.dart';
 import 'blocs/genres/genres_bloc.dart';
@@ -39,7 +40,7 @@ class ExplorePage extends StatelessWidget {
                   const TopAnimeList(),
                   const SizedBox(height: 20),
                   Text(
-                    "Explore Genres",
+                    S.of(context).genresSectionTitle,
                     style: AppTextStyle.s28w600
                         .copyWith(color: AppColors.indigo900),
                   ),

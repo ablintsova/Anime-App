@@ -1,0 +1,8 @@
+{
+  "@@locale": "en_EN",
+  "topAnimeSectionTitle": "Top Rated Anime",
+  "emptyTopAnimeListMessage": "Why do you even care about what other people think?",
+  "genresSectionTitle": "Explore Genres",
+  "emptyGenreListMessage": "Hmm, I guess, anime is it's own genre...",
+  "seeAllButtonText": "See all"
+}
