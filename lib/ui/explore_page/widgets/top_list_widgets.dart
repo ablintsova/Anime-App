@@ -1,3 +1,5 @@
+import 'package:anime_app/core/themes/app_colors.dart';
+import 'package:anime_app/core/themes/app_text_style.dart';
 import 'package:flutter/material.dart';
 
 class TopAnimeListHeader extends StatelessWidget {
@@ -10,11 +12,7 @@ class TopAnimeListHeader extends StatelessWidget {
       children: [
         Text(
           "Top Rated Anime",
-          style: TextStyle(
-            color: Colors.indigo[900],
-            fontSize: 28,
-            fontWeight: FontWeight.w700,
-          ),
+          style: AppTextStyle.s28w600.copyWith(color: AppColors.indigo900),
         ),
         GestureDetector(
           onTap: () {
@@ -22,10 +20,7 @@ class TopAnimeListHeader extends StatelessWidget {
           },
           child: Text(
             "See all",
-            style: TextStyle(
-              color: Colors.indigo[900],
-              fontSize: 18,
-            ),
+            style: AppTextStyle.s18w500.copyWith(color: AppColors.indigo900),
           ),
         ),
       ],
@@ -73,22 +68,17 @@ class TopAnimeCard extends StatelessWidget {
           Container(
             height: 150,
             width: 95,
-            color: Colors.purple[200],
+            color: AppColors.purple200,
           ),
           const SizedBox(height: 6),
           Expanded(
-            child: SizedBox(
-              width: 95,
-              child: Text(
-                title.length < 25 ? title : "${title.substring(0, 20)}...",
-                style: TextStyle(
-                  color: Colors.indigo[700],
-                  fontSize: 18,
-                  fontWeight: FontWeight.w600,
-                ),
-              ),
+              child: SizedBox(
+            width: 95,
+            child: Text(
+              title.length < 25 ? title : "${title.substring(0, 20)}...",
+              style: AppTextStyle.s18w600.copyWith(color: AppColors.indigo800),
             ),
-          )
+          ))
         ]),
       ),
     );

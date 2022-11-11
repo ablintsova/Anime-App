@@ -1,3 +1,4 @@
+import 'package:anime_app/core/themes/app_themes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -32,10 +33,9 @@ class _AppInitializationWidgetState extends State<AppInitializationWidget> {
       routerDelegate: _routerWrapper!.goRouter.routerDelegate,
       routeInformationParser: _routerWrapper!.goRouter.routeInformationParser,
       routeInformationProvider:
-      _routerWrapper!.goRouter.routeInformationProvider,
+          _routerWrapper!.goRouter.routeInformationProvider,
       title: 'Anime app',
-      //theme: AppThemes.lightTheme,
-      //darkTheme: AppThemes.darkTheme,
+      theme: appTheme,
     );
   }
 }
