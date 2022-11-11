@@ -17,10 +17,10 @@ class ExplorePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt.get<GenresBloc>()..add(InitialEvent()),
+          create: (context) => getIt.get<GenresBloc>()..add(InitialGenresEvent()),
         ),
         BlocProvider(
-          create: (context) => getIt.get<TopAnimeBloc>(),
+          create: (context) => getIt.get<TopAnimeBloc>().. add(InitialTopListEvent()),
         ),
       ],
       child: Scaffold(

@@ -8,6 +8,7 @@ import '../../models/GenreModel.dart';
 class MainRepository {
   final ApiProvider _apiProvider;
   List<GenreModel>? genres;
+  List? topAnime;
 
   MainRepository(this._apiProvider);
 
@@ -21,6 +22,6 @@ class MainRepository {
   }
 
   Future getTopRatedAnime() async {
-    // TODO: implement
+    return topAnime = await _apiProvider.getTopAnimeList();
   }
 }

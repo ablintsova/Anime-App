@@ -3,6 +3,4 @@ part of 'genres_bloc.dart';
 @immutable
 abstract class GenresEvent {}
 
-class InitialEvent extends GenresEvent {
-
-}
+class InitialGenresEvent extends GenresEvent {}

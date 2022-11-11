@@ -15,7 +15,7 @@ class GenresBloc extends Bloc<GenresEvent, GenresState> {
   final MainRepository _repo;
 
   GenresBloc(this._repo) : super(const GenresAreLoading()) {
-    on<InitialEvent>(_onInitialEvent);
+    on<InitialGenresEvent>(_onInitialEvent);
   }
 
   void _onInitialEvent(event, emit) async {

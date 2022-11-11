@@ -1,6 +1,20 @@
 part of 'top_anime_bloc.dart';
 
 @immutable
-abstract class TopAnimeState {}
+abstract class TopAnimeState {
+  final List<AnimeModel>? topAnimeList;
 
-class TopAnimeInitial extends TopAnimeState {}
+  const TopAnimeState({this.topAnimeList});
+}
+
+class ListIsEmpty extends TopAnimeState {
+  const ListIsEmpty();
+}
+
+class ListIsLoading extends TopAnimeState {
+  const ListIsLoading();
+}
+
+class ListHasLoaded extends TopAnimeState {
+  const ListHasLoaded({required super.topAnimeList});
+}

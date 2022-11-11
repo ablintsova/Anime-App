@@ -1,6 +1,10 @@
 import 'package:anime_app/core/themes/app_colors.dart';
 import 'package:anime_app/core/themes/app_text_style.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+
+import '../../../core/models/AnimeModel.dart';
+import '../blocs/top_anime/top_anime_bloc.dart';
 
 class TopAnimeListHeader extends StatelessWidget {
   const TopAnimeListHeader({super.key});
@@ -33,28 +37,46 @@ class TopAnimeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 240,
-      child: CustomScrollView(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        slivers: [
-          SliverList(
-            delegate: SliverChildBuilderDelegate(
-              (context, index) => TopAnimeCard(title: "Anime Title $index"),
-              childCount: 8,
-            ),
-          ),
-        ],
-      ),
+    return BlocBuilder<TopAnimeBloc, TopAnimeState>(
+      builder: (context, state) {
+        return state is ListIsLoading
+            ? const Center(
+                child: CircularProgressIndicator(),
+              )
+            : state is ListIsEmpty
+                ? Center(
+                    child: Text(
+                      "Why do you even care about what other people think?",
+                      style: AppTextStyle.s20w600.copyWith(
+                        color: AppColors.purple500,
+                      ),
+                    ),
+                  )
+                : SizedBox(
+                    height: 290,
+                    child: CustomScrollView(
+                      shrinkWrap: true,
+                      scrollDirection: Axis.horizontal,
+                      slivers: [
+                        SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) =>
+                                TopAnimeCard(anime: state.topAnimeList![index]),
+                            childCount: state.topAnimeList!.length,
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+      },
     );
   }
 }
 
 class TopAnimeCard extends StatelessWidget {
-  final String title;
+  final AnimeModel anime;
 
-  const TopAnimeCard({super.key, required this.title});
+  const TopAnimeCard({super.key, required this.anime});
 
   @override
   Widget build(BuildContext context) {
@@ -65,17 +87,18 @@ class TopAnimeCard extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
-          Container(
-            height: 150,
-            width: 95,
-            color: AppColors.purple200,
+          Image.network(
+            anime.images!.imageUrl,
+            scale: 1.5,
           ),
           const SizedBox(height: 6),
           Expanded(
               child: SizedBox(
-            width: 95,
+            width: 150,
             child: Text(
-              title.length < 25 ? title : "${title.substring(0, 20)}...",
+              anime.title.length < 25
+                  ? anime.title
+                  : "${anime.title.substring(0, 20)}...",
               style: AppTextStyle.s18w600.copyWith(color: AppColors.indigo800),
             ),
           ))

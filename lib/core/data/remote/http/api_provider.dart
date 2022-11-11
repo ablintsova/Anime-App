@@ -1,3 +1,4 @@
+import 'package:anime_app/core/models/AnimeModel.dart';
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 
@@ -16,8 +17,16 @@ class ApiProvider {
 }
 
 extension Explore on ApiProvider {
-  Future<List<GenreModel>> getGenres() async {
+  Future<List<GenreModel>?> getGenres() async {
     final response = await _httpClient.get(query: "/genres/anime");
     return List<GenreModel>.from(response.map((x) => GenreModel.fromJson(x)));
+  }
+
+  Future<List<AnimeModel>?> getTopAnimeList({
+    int limit = 10,
+  }) async {
+    final response = await _httpClient
+        .get(query: "/top/anime", queryParameters: {"limit": limit});
+    return List<AnimeModel>.from(response.map((x) => AnimeModel.fromJson(x)));
   }
 }
