@@ -1,11 +1,13 @@
+import 'package:anime_app/core/navigation/app_routes.dart';
 import 'package:anime_app/core/themes/app_colors.dart';
 import 'package:anime_app/core/themes/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/localization/l10n.dart';
 import '../../../core/models/AnimeModel.dart';
-import '../blocs/top_anime/top_anime_bloc.dart';
+import '../pages/top_anime/bloc/top_anime_bloc.dart';
 
 class TopAnimeListHeader extends StatelessWidget {
   const TopAnimeListHeader({super.key});
@@ -21,7 +23,8 @@ class TopAnimeListHeader extends StatelessWidget {
         ),
         GestureDetector(
           onTap: () {
-            // TODO: go to full list
+            GoRouter.of(context)
+                .go("${AppRoutes.explore}/${AppRoutes.topAnimePage}");
           },
           child: Text(
             S.of(context).seeAllButtonText,

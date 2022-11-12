@@ -21,6 +21,8 @@ class AppColors {
   static Color? indigo800 = Colors.indigo[800];
   static Color? indigo700 = Colors.indigo[700];
   static Color? indigo600 = Colors.indigo[600];
+  static Color? indigo500 = Colors.indigo[500];
+  static Color? indigo400 = Colors.indigo[400];
   static Color? purple500 = Colors.purple[500];
   static Color? purple400 = Colors.purple[400];
   static Color? purple300 = Colors.purple[300];

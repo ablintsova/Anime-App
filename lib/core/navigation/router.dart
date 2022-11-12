@@ -1,4 +1,5 @@
 import 'package:anime_app/ui/explore_page/explore_page.dart';
+import 'package:anime_app/ui/explore_page/pages/top_anime/top_anime_page.dart';
 import 'package:anime_app/ui/favorites_page/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -26,7 +27,12 @@ class GoRouterWrapper {
               path: AppRoutes.explore,
               pageBuilder: (context, state) => NoTransitionPage(
                   key: state.pageKey, child: const ExplorePage()),
-              routes: const [],
+              routes: [
+                GoRoute(
+                  path: AppRoutes.topAnimePage,
+                  builder: (context, state) => const TopAnimePage(),
+                ),
+              ],
             ),
             GoRoute(
               path: AppRoutes.favorites,

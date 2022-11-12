@@ -9,7 +9,7 @@ import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
 import '../../ui/explore_page/blocs/genres/genres_bloc.dart' as _i8;
-import '../../ui/explore_page/blocs/top_anime/top_anime_bloc.dart' as _i7;
+import '../../ui/explore_page/pages/top_anime/bloc/top_anime_bloc.dart' as _i7;
 import '../data/remote/http/api_provider.dart' as _i3;
 import '../data/remote/http/base_http_client.dart' as _i4;
 import '../data/remote/http/http_client.dart' as _i5;

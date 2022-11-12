@@ -5,14 +5,16 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../core/data/repositories/main_repository.dart';
+import '../../../../../core/data/repositories/main_repository.dart';
 
 part 'top_anime_event.dart';
+
 part 'top_anime_state.dart';
 
 @injectable
 class TopAnimeBloc extends Bloc<TopAnimeEvent, TopAnimeState> {
   final MainRepository _repo;
+
   TopAnimeBloc(this._repo) : super(const ListIsLoading()) {
     on<InitialTopListEvent>(_onInitialEvent);
   }
