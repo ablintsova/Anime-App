@@ -37,7 +37,9 @@ class GenreList extends StatelessWidget {
                             children: [
                               GenreCard(genre: state.genres![index]),
                               if (index != state.genres!.length - 1)
-                                const Divider(),
+                                const Divider(
+                                  color: AppColors.black400,
+                                ),
                             ],
                           ),
                           childCount: state.genres!.length,
@@ -74,8 +76,7 @@ class GenreCard extends StatelessWidget {
             ),
             Text(
               "(${genre.count})",
-              style:
-                  AppTextStyle.s20w600.copyWith(color: AppColors.purple300),
+              style: AppTextStyle.s20w600.copyWith(color: AppColors.purple300),
             ),
           ],
         ),

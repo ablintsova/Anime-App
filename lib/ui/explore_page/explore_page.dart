@@ -18,36 +18,44 @@ class ExplorePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => getIt.get<GenresBloc>()..add(InitialGenresEvent()),
+          create: (context) =>
+              getIt.get<GenresBloc>()..add(InitialGenresEvent()),
         ),
         BlocProvider(
-          create: (context) => getIt.get<TopAnimeBloc>().. add(InitialTopListEvent()),
+          create: (context) =>
+              getIt.get<TopAnimeBloc>()..add(InitialTopListEvent()),
         ),
       ],
       child: Scaffold(
-        body: SafeArea(
-          child: SingleChildScrollView(
-            physics: const ClampingScrollPhysics(),
-            child: Padding(
-              padding: const EdgeInsets.all(20.0),
-              child: Column(
-                mainAxisSize: MainAxisSize.max,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const SizedBox(height: 20),
-                  const TopAnimeListHeader(),
-                  const SizedBox(height: 15),
-                  const TopAnimeList(),
-                  const SizedBox(height: 20),
-                  Text(
-                    S.of(context).genresSectionTitle,
-                    style: AppTextStyle.s28w600
-                        .copyWith(color: AppColors.indigo900),
-                  ),
-                  const SizedBox(height: 15),
-                  const GenreList(),
-                ],
+        extendBodyBehindAppBar: true,
+        body: SingleChildScrollView(
+          physics: const ClampingScrollPhysics(),
+          child: Container(
+            padding: const EdgeInsets.all(20.0),
+            decoration: const BoxDecoration(
+              image: DecorationImage(
+                image: AssetImage("assets/images/background_image.jpg"),
+                fit: BoxFit.cover,
+                opacity: 0.9,
               ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const SizedBox(height: 40),
+                const TopAnimeListHeader(),
+                const SizedBox(height: 15),
+                const TopAnimeList(),
+                const SizedBox(height: 20),
+                Text(
+                  S.of(context).genresSectionTitle,
+                  style: AppTextStyle.s28w600
+                      .copyWith(color: AppColors.indigo900),
+                ),
+                const SizedBox(height: 15),
+                const GenreList(),
+              ],
             ),
           ),
         ),
