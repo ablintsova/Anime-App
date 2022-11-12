@@ -22,7 +22,7 @@ class _LikeButtonState extends State<LikeButton> {
       },
       child: Icon(
         isFavorite ? Icons.favorite : Icons.favorite_border,
-        color: AppColors.purple500,
+        color: AppColors.purple300,
         size: 35,
       ),
     );

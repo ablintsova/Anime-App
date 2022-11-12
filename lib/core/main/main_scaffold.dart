@@ -23,6 +23,7 @@ class BottomNavBarTabItem extends BottomNavigationBarItem {
 class MainScaffold extends StatefulWidget {
   /// The navigator for the currently active tab
   final Navigator currentNavigator;
+
   List<Page<dynamic>> get pagesForCurrentRoute => currentNavigator.pages;
   final GoRouterState currentRouterState;
   final List<RouteBase> routes;
@@ -104,6 +105,7 @@ class _MainScaffoldState extends State<MainScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       body: _buildBody(context),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,

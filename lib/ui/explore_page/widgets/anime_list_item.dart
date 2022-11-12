@@ -14,12 +14,13 @@ class AnimeListItem extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.all(16.0),
       margin: const EdgeInsets.only(bottom: 10.0),
+      height: 125,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: AppColors.black100,
+        color: AppColors.indigo400!.withOpacity(0.2),
       ),
       child: Row(
-        crossAxisAlignment: CrossAxisAlignment.start,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Container(
             alignment: Alignment.topLeft,
@@ -34,10 +35,13 @@ class AnimeListItem extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  anime.title,
-                  style:
-                      AppTextStyle.s18w600.copyWith(color: AppColors.black700),
+                Align(
+                  alignment: Alignment.topLeft,
+                  child: Text(
+                    anime.title,
+                    style: AppTextStyle.s18w600
+                        .copyWith(color: AppColors.black800),
+                  ),
                 ),
                 if (anime.score != null) ...[
                   const SizedBox(height: 4),
@@ -51,15 +55,14 @@ class AnimeListItem extends StatelessWidget {
                             .copyWith(color: AppColors.indigo800),
                       )
                     ],
-                  )
-                ]
+                  ),
+                ],
               ],
             ),
           ),
-          Container(
-            alignment: Alignment.centerRight,
-            padding: const EdgeInsets.all(8.0),
-            child: const LikeButton(),
+          const Padding(
+            padding: EdgeInsets.all(8.0),
+            child: LikeButton(),
           ),
         ],
       ),

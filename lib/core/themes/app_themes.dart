@@ -37,7 +37,7 @@ final appTheme = ThemeData(
   iconTheme: iconThemeData,
   bottomNavigationBarTheme: BottomNavigationBarThemeData(
     elevation: 12,
-    backgroundColor: AppColors.white.withOpacity(0.8),
+    backgroundColor: AppColors.white.withOpacity(0.9),
     selectedIconTheme: IconThemeData(
       color: AppColors.purple500!,
       size: 27,
