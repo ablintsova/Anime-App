@@ -89,10 +89,8 @@ class _MainScaffoldState extends State<MainScaffold> {
     return index < 0 ? 0 : index;
   }
 
-  void _onTap(BuildContext context, int tabIndex) {
-    if (tabIndex != _currentIndex) {
-      context.go(tabs[tabIndex].initialPath);
-    }
+  void _onTap(int index, BuildContext context) {
+    GoRouter.of(context).go(_tabs[index].currentLocation);
   }
 
   Widget _buildBody(BuildContext context) {
@@ -112,7 +110,7 @@ class _MainScaffoldState extends State<MainScaffold> {
         items: _tabs
             .map((_NavBarTabNavigator e) => e.bottomNavigationTab)
             .toList(),
-        onTap: (index) => _onTap(context, index),
+        onTap: (index) => _onTap(index, context),
       ),
     );
   }
