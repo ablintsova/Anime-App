@@ -24,4 +24,8 @@ class MainRepository {
   Future getTopRatedAnime() async {
     return topAnime = await _apiProvider.getTopAnimeList();
   }
+
+  Future getAnimeByGenre({required int genreId}) async {
+    return await _apiProvider.getAnimeByGenre(genreId: genreId);
+  }
 }

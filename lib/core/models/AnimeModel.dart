@@ -60,7 +60,7 @@ class AnimeModel {
   final bool? approved;
   final List<Title> titles;
   final String title;
-  final String titleEnglish;
+  final String? titleEnglish;
   final String? titleJapanese;
   final List<String>? titleSynonyms;
   final String? type;

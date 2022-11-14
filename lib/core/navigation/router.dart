@@ -1,9 +1,10 @@
 import 'package:anime_app/ui/explore_page/explore_page.dart';
-import 'package:anime_app/ui/explore_page/pages/top_anime/top_anime_page.dart';
 import 'package:anime_app/ui/favorites_page/favorites_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
+import '../../ui/explore_page/pages/anime_list/anime_list_page.dart';
+import '../models/GenreModel.dart';
 import 'app_routes.dart';
 import 'custom_shell_route.dart';
 
@@ -29,8 +30,9 @@ class GoRouterWrapper {
                   key: state.pageKey, child: const ExplorePage()),
               routes: [
                 GoRoute(
-                  path: AppRoutes.topAnimePage,
-                  builder: (context, state) => const TopAnimePage(),
+                  path: AppRoutes.animeListPage,
+                  builder: (context, state) =>
+                      AnimeListPage(genre: state.extra as GenreModel?),
                 ),
               ],
             ),

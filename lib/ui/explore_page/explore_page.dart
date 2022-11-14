@@ -1,4 +1,4 @@
-import 'package:anime_app/ui/explore_page/pages/top_anime/bloc/top_anime_bloc.dart';
+import 'package:anime_app/ui/explore_page/pages/anime_list/bloc/anime_list_bloc.dart';
 import 'package:anime_app/ui/explore_page/widgets/genre_widgets.dart';
 import 'package:anime_app/ui/explore_page/widgets/top_list_widgets.dart';
 import 'package:flutter/material.dart';
@@ -24,7 +24,7 @@ class ExplorePage extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) =>
-              getIt.get<TopAnimeBloc>()..add(InitialTopListEvent()),
+              getIt.get<AnimeListBloc>()..add(GetTopAnime()),
         ),
       ],
       child: Scaffold(

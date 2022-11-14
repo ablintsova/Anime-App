@@ -4,8 +4,10 @@ import 'package:bloc/bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 
-import '../../../../core/data/repositories/main_repository.dart';
-import '../../../../core/models/GenreModel.dart';
+import '../../../../../core/data/repositories/main_repository.dart';
+import '../../../../../core/models/AnimeModel.dart';
+import '../../../../../core/models/GenreModel.dart';
+
 
 part 'genres_event.dart';
 part 'genres_state.dart';

@@ -1,8 +1,10 @@
 import 'package:anime_app/core/models/GenreModel.dart';
+import 'package:anime_app/core/navigation/app_routes.dart';
 import 'package:anime_app/core/themes/app_colors.dart';
 import 'package:anime_app/core/themes/app_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../core/localization/l10n.dart';
 import '../blocs/genres/genres_bloc.dart';
@@ -61,9 +63,13 @@ class GenreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // TODO: go to anime list of this genre
+        context.go(
+          "${AppRoutes.explore}/${AppRoutes.animeListPage}",
+          extra: genre,
+        );
       },
-      child: Padding(
+      child: Container(
+        color: Colors.transparent,
         padding: const EdgeInsets.symmetric(vertical: 15.0),
         child: Row(
           children: [

@@ -25,8 +25,24 @@ extension Explore on ApiProvider {
   Future<List<AnimeModel>?> getTopAnimeList({
     int limit = 10,
   }) async {
-    final response = await _httpClient
-        .get(query: "/top/anime", queryParameters: {"limit": limit});
+    final response = await _httpClient.get(
+      query: "/top/anime",
+      queryParameters: {"limit": limit},
+    );
+    return List<AnimeModel>.from(response.map((x) => AnimeModel.fromJson(x)));
+  }
+
+  Future<List<AnimeModel>?> getAnimeByGenre({
+    required int genreId,
+    int limit = 10,
+  }) async {
+    final response = await _httpClient.get(
+      query: "/anime",
+      queryParameters: {
+        "limit": limit,
+        "genres": genreId,
+      },
+    );
     return List<AnimeModel>.from(response.map((x) => AnimeModel.fromJson(x)));
   }
 }

@@ -7,7 +7,7 @@ import 'package:go_router/go_router.dart';
 
 import '../../../core/localization/l10n.dart';
 import '../../../core/models/AnimeModel.dart';
-import '../pages/top_anime/bloc/top_anime_bloc.dart';
+import '../pages/anime_list/bloc/anime_list_bloc.dart';
 
 class TopAnimeListHeader extends StatelessWidget {
   const TopAnimeListHeader({super.key});
@@ -24,7 +24,7 @@ class TopAnimeListHeader extends StatelessWidget {
         GestureDetector(
           onTap: () {
             GoRouter.of(context)
-                .go("${AppRoutes.explore}/${AppRoutes.topAnimePage}");
+                .go("${AppRoutes.explore}/${AppRoutes.animeListPage}");
           },
           child: Text(
             S.of(context).seeAllButtonText,
@@ -41,7 +41,7 @@ class TopAnimeList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<TopAnimeBloc, TopAnimeState>(
+    return BlocBuilder<AnimeListBloc, AnimeListState>(
       builder: (context, state) {
         return state is ListIsLoading
             ? const Center(
@@ -65,8 +65,8 @@ class TopAnimeList extends StatelessWidget {
                         SliverList(
                           delegate: SliverChildBuilderDelegate(
                             (context, index) =>
-                                TopAnimeCard(anime: state.topAnimeList![index]),
-                            childCount: state.topAnimeList!.length,
+                                TopAnimeCard(anime: state.animeList![index]),
+                            childCount: state.animeList!.length,
                           ),
                         ),
                       ],
