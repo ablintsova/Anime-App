@@ -3,4 +3,5 @@ class AppRoutes {
   static const String explore = '/explore';
   static const String favorites = '/favorites';
   static const String animeListPage = 'anime_list';
+  static const String animeInfoPage = 'anime_info';
 }
