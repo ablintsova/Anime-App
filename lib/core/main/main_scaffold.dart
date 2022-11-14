@@ -91,7 +91,10 @@ class _MainScaffoldState extends State<MainScaffold> {
   }
 
   void _onTap(int index, BuildContext context) {
-    GoRouter.of(context).go(_tabs[index].currentLocation);
+    GoRouter.of(context).go(
+      _tabs[index].currentLocation,
+      extra: widget.currentRouterState.extra,
+    );
   }
 
   Widget _buildBody(BuildContext context) {
