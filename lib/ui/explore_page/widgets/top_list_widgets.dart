@@ -86,8 +86,11 @@ class TopAnimeCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        context.go(
-          "${AppRoutes.explore}/${AppRoutes.animeInfoPage}",
+        context.goNamed(
+          AppRoutes.animeInfoPage,
+          queryParams: {
+            "path": AppRoutes.explore,
+          },
           extra: anime,
         );
       },

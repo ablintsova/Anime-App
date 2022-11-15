@@ -12,9 +12,10 @@ import '../../../../core/themes/app_colors.dart';
 import '../../../../core/themes/app_text_style.dart';
 
 class AnimeListPage extends StatelessWidget {
+  final String rootPath;
   final GenreModel? genre;
 
-  const AnimeListPage({super.key, this.genre});
+  const AnimeListPage({super.key, required this.rootPath, this.genre});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +70,10 @@ class AnimeListPage extends StatelessWidget {
                               sliver: SliverList(
                                 delegate: SliverChildBuilderDelegate(
                                   (context, index) => AnimeListItem(
-                                      anime: state.animeList![index]),
+                                    rootPath: rootPath,
+                                    genre: genre?.toJson(),
+                                    anime: state.animeList![index],
+                                  ),
                                   childCount: state.animeList!.length,
                                 ),
                               ),
