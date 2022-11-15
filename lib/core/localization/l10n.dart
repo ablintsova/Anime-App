@@ -99,6 +99,66 @@ class S {
       args: [],
     );
   }
+
+  /// `Year`
+  String get year {
+    return Intl.message(
+      'Year',
+      name: 'year',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Title`
+  String get title {
+    return Intl.message(
+      'Title',
+      name: 'title',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Japanese title`
+  String get japaneseTitle {
+    return Intl.message(
+      'Japanese title',
+      name: 'japaneseTitle',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Episodes`
+  String get episodes {
+    return Intl.message(
+      'Episodes',
+      name: 'episodes',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Score`
+  String get score {
+    return Intl.message(
+      'Score',
+      name: 'score',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Synopsis`
+  String get synopsis {
+    return Intl.message(
+      'Synopsis',
+      name: 'synopsis',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

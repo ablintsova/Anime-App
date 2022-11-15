@@ -26,10 +26,16 @@ class MessageLookup extends MessageLookupByLibrary {
             "Hmm, I guess, anime is it\'s own genre..."),
         "emptyTopAnimeListMessage": MessageLookupByLibrary.simpleMessage(
             "Why do you even care about what other people think?"),
+        "episodes": MessageLookupByLibrary.simpleMessage("Episodes"),
         "genresSectionTitle":
             MessageLookupByLibrary.simpleMessage("Explore Genres"),
+        "japaneseTitle": MessageLookupByLibrary.simpleMessage("Japanese title"),
+        "score": MessageLookupByLibrary.simpleMessage("Score"),
         "seeAllButtonText": MessageLookupByLibrary.simpleMessage("See all"),
+        "synopsis": MessageLookupByLibrary.simpleMessage("Synopsis"),
+        "title": MessageLookupByLibrary.simpleMessage("Title"),
         "topAnimeSectionTitle":
-            MessageLookupByLibrary.simpleMessage("Top Rated Anime")
+            MessageLookupByLibrary.simpleMessage("Top Rated Anime"),
+        "year": MessageLookupByLibrary.simpleMessage("Year")
       };
 }
