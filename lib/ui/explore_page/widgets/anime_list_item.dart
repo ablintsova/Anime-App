@@ -45,10 +45,12 @@ class AnimeListItem extends StatelessWidget {
             Container(
               alignment: Alignment.topLeft,
               width: 65,
-              child: Image.network(
-                anime.images!.smallImageUrl,
-                scale: 0.8,
-              ),
+              child: anime.jpgImage == null
+                  ? Container()
+                  : Image.network(
+                      anime.jpgImage!.smallImageUrl,
+                      scale: 0.8,
+                    ),
             ),
             const SizedBox(width: 6),
             Expanded(
@@ -80,9 +82,9 @@ class AnimeListItem extends StatelessWidget {
                 ],
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: LikeButton(),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: LikeButton(anime: anime),
             ),
           ],
         ),

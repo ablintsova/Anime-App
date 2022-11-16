@@ -98,7 +98,7 @@ class TopAnimeCard extends StatelessWidget {
         padding: const EdgeInsets.all(8.0),
         child: Column(children: [
           Image.network(
-            anime.images!.imageUrl,
+            anime.jpgImage!.imageUrl,
             scale: 1.5,
           ),
           const SizedBox(height: 6),

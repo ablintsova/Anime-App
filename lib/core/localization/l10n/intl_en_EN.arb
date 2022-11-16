@@ -10,5 +10,13 @@
   "japaneseTitle": "Japanese title",
   "episodes": "Episodes",
   "score": "Score",
-  "synopsis": "Synopsis"
+  "synopsis": "Synopsis",
+  "emptyFavorites": "Explore our anime list!\nCatch 'em all!",
+  "favoritesCount" : "{count, plural, zero{Explore our anime list!\nCatch 'em all!} one{You have 1 item in the list} other{You have {count} items in the list}}",
+  "@favoritesCount" : {
+    "description" : "Favorite items count",
+    "placeholders": {
+      "count": {}
+    }
+  }
 }

@@ -20,13 +20,19 @@ typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 class MessageLookup extends MessageLookupByLibrary {
   String get localeName => 'en_EN';
 
+  static String m0(count) =>
+      "${Intl.plural(count, zero: 'Explore our anime list!\nCatch \'em all!', one: 'You have 1 item in the list', other: 'You have ${count} items in the list')}";
+
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
+        "emptyFavorites": MessageLookupByLibrary.simpleMessage(
+            "Explore our anime list!\nCatch \'em all!"),
         "emptyGenreListMessage": MessageLookupByLibrary.simpleMessage(
             "Hmm, I guess, anime is it\'s own genre..."),
         "emptyTopAnimeListMessage": MessageLookupByLibrary.simpleMessage(
             "Why do you even care about what other people think?"),
         "episodes": MessageLookupByLibrary.simpleMessage("Episodes"),
+        "favoritesCount": m0,
         "genresSectionTitle":
             MessageLookupByLibrary.simpleMessage("Explore Genres"),
         "japaneseTitle": MessageLookupByLibrary.simpleMessage("Japanese title"),

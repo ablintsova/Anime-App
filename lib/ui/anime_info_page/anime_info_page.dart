@@ -38,7 +38,7 @@ class AnimeInfoPage extends StatelessWidget {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: _AppBar(
-          title: anime.title,
+          anime: anime,
           onBackArrowTap: () => context.go(
             previousPath,
             extra: previousExtra == null
@@ -65,7 +65,7 @@ class AnimeInfoPage extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Image.network(
-                        anime.images!.imageUrl,
+                        anime.jpgImage!.imageUrl,
                         scale: 1.5,
                       ),
                       const SizedBox(width: 10),
@@ -116,10 +116,10 @@ class AnimeInfoPage extends StatelessWidget {
 }
 
 class _AppBar extends StatelessWidget implements PreferredSizeWidget {
-  final String title;
+  final AnimeModel anime;
   final void Function() onBackArrowTap;
 
-  const _AppBar({required this.onBackArrowTap, required this.title});
+  const _AppBar({required this.onBackArrowTap, required this.anime});
 
   @override
   Size get preferredSize => const Size.fromHeight(60.0);
@@ -127,7 +127,7 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
   @override
   Widget build(BuildContext context) {
     return AppBar(
-      title: Text(title),
+      title: Text(anime.title),
       leading: GestureDetector(
         onTap: onBackArrowTap,
         child: Icon(
@@ -139,7 +139,7 @@ class _AppBar extends StatelessWidget implements PreferredSizeWidget {
           padding: const EdgeInsets.symmetric(horizontal: 12.0),
           child: Transform.scale(
             scale: 0.8,
-            child: const LikeButton(),
+            child: LikeButton(anime: anime),
           ),
         )
       ],

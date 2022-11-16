@@ -159,6 +159,29 @@ class S {
       args: [],
     );
   }
+
+  /// `Explore our anime list!\nCatch 'em all!`
+  String get emptyFavorites {
+    return Intl.message(
+      'Explore our anime list!\nCatch \'em all!',
+      name: 'emptyFavorites',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `{count, plural, zero{Explore our anime list!\nCatch 'em all!} one{You have 1 item in the list} other{You have {count} items in the list}}`
+  String favoritesCount(num count) {
+    return Intl.plural(
+      count,
+      zero: 'Explore our anime list!\nCatch \'em all!',
+      one: 'You have 1 item in the list',
+      other: 'You have $count items in the list',
+      name: 'favoritesCount',
+      desc: 'Favorite items count',
+      args: [count],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

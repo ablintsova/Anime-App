@@ -13,7 +13,7 @@ class AnimeModel {
   AnimeModel({
     required this.malId,
     required this.url,
-    required this.images,
+    required this.jpgImage,
     this.trailer,
     required this.approved,
     required this.titles,
@@ -55,7 +55,7 @@ class AnimeModel {
 
   final int malId;
   final String? url;
-  final JpgImage? images;
+  final JpgImage? jpgImage;
   final Trailer? trailer;
   final bool? approved;
   final List<Title> titles;
@@ -97,9 +97,11 @@ class AnimeModel {
   factory AnimeModel.fromJson(Map<String, dynamic> json) => AnimeModel(
         malId: json["mal_id"],
         url: json["url"],
-        images: json["images"] == null
+        jpgImage: json["images"] == null
             ? null
-            : JpgImage.fromJson(json["images"]["jpg"]),
+            : json["images"]["jpg"] == null
+                ? null
+                : JpgImage.fromJson(json["images"]["jpg"]),
         trailer:
             json["trailer"] == null ? null : Trailer.fromJson(json["trailer"]),
         approved: json["approved"],
@@ -179,14 +181,14 @@ class AnimeModel {
   Map<String, dynamic> toJson() => {
         "mal_id": malId,
         "url": url,
-        "images": images?.toJson(),
+        "images": jpgImage?.toJson(),
         "trailer": trailer?.toJson(),
         "approved": approved,
         "titles": List<dynamic>.from(titles.map((x) => x.toJson())),
         "title": title,
         "title_english": titleEnglish,
         "title_japanese": titleJapanese,
-        "title_synonyms": List<dynamic>.from(titleSynonyms??[].map((x) => x)),
+        "title_synonyms": List<dynamic>.from(titleSynonyms ?? [].map((x) => x)),
         "type": type,
         "source": source,
         "episodes": episodes,
@@ -206,14 +208,15 @@ class AnimeModel {
         "season": season,
         "year": year,
         "broadcast": broadcast?.toJson(),
-        "producers": List<dynamic>.from(producers??[].map((x) => x.toJson())),
-        "licensors": List<dynamic>.from(licensors??[].map((x) => x.toJson())),
-        "studios": List<dynamic>.from(studios??[].map((x) => x.toJson())),
-        "genres": List<dynamic>.from(genres??[].map((x) => x.toJson())),
+        "producers": List<dynamic>.from(producers ?? [].map((x) => x.toJson())),
+        "licensors": List<dynamic>.from(licensors ?? [].map((x) => x.toJson())),
+        "studios": List<dynamic>.from(studios ?? [].map((x) => x.toJson())),
+        "genres": List<dynamic>.from(genres ?? [].map((x) => x.toJson())),
         "explicit_genres":
-            List<dynamic>.from(explicitGenres??[].map((x) => x.toJson())),
-        "themes": List<dynamic>.from(themes??[].map((x) => x.toJson())),
-        "demographics": List<dynamic>.from(demographics??[].map((x) => x.toJson())),
+            List<dynamic>.from(explicitGenres ?? [].map((x) => x.toJson())),
+        "themes": List<dynamic>.from(themes ?? [].map((x) => x.toJson())),
+        "demographics":
+            List<dynamic>.from(demographics ?? [].map((x) => x.toJson())),
         "relations": List<dynamic>.from(relations ?? [].map((x) => x.toJson())),
         "theme": theme?.toJson(),
         "external":
