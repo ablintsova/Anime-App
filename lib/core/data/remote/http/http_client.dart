@@ -109,8 +109,8 @@ class _HttpClient implements BaseHttpClient {
       }
     });
     final result = response.data;
-    if (result['ok'] == true) {
-      return result['result'] ?? true;
+    if (result['data'] != null) {
+      return result['data'] ?? true;
     } else {
       return false;
     }

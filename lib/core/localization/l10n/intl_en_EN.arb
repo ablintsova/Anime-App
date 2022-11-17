@@ -1,0 +1,22 @@
+{
+  "@@locale": "en_EN",
+  "topAnimeSectionTitle": "Top Rated Anime",
+  "emptyTopAnimeListMessage": "Why do you even care about what other people think?",
+  "genresSectionTitle": "Explore Genres",
+  "emptyGenreListMessage": "Hmm, I guess, anime is it's own genre...",
+  "seeAllButtonText": "See all",
+  "year": "Year",
+  "title": "Title",
+  "japaneseTitle": "Japanese title",
+  "episodes": "Episodes",
+  "score": "Score",
+  "synopsis": "Synopsis",
+  "emptyFavorites": "Explore our anime list!\nCatch 'em all!",
+  "favoritesCount" : "{count, plural, zero{Explore our anime list!\nCatch 'em all!} one{You have 1 item in the list} other{You have {count} items in the list}}",
+  "@favoritesCount" : {
+    "description" : "Favorite items count",
+    "placeholders": {
+      "count": {}
+    }
+  }
+}
