@@ -100,7 +100,7 @@ class AnimeModel {
         jpgImage: json["images"] == null
             ? null
             : json["images"]["jpg"] == null
-                ? null
+                ? JpgImage.fromJson(json["images"])
                 : JpgImage.fromJson(json["images"]["jpg"]),
         trailer:
             json["trailer"] == null ? null : Trailer.fromJson(json["trailer"]),
