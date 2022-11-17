@@ -84,7 +84,10 @@ class AnimeListItem extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(8.0),
-              child: LikeButton(anime: anime),
+              child: LikeButton(
+                anime: anime,
+                fromFavorites: rootPath == AppRoutes.favorites,
+              ),
             ),
           ],
         ),

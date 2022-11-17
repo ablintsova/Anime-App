@@ -122,7 +122,7 @@ class AnimeModel {
         aired: json["aired"] == null ? null : Aired.fromJson(json["aired"]),
         duration: json["duration"],
         rating: json["rating"],
-        score: json["score"],
+        score: double.parse(json["score"].toString()),
         scoredBy: json["scored_by"],
         rank: json["rank"],
         popularity: json["popularity"],

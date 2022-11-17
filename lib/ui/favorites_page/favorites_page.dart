@@ -18,56 +18,63 @@ class FavoritesPage extends StatelessWidget {
       create: (context) => getIt.get<FavoritesBloc>()..add(InitFavorites()),
       child: BlocBuilder<FavoritesBloc, FavoritesState>(
         builder: (context, state) {
-          return Scaffold(
-            extendBodyBehindAppBar: true,
-            body: Container(
-              decoration: const BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage("assets/images/background_favorites.jpeg"),
-                  fit: BoxFit.cover,
-                  opacity: 0.5,
+          return RefreshIndicator(
+            onRefresh: () async => Future.delayed(
+              const Duration(milliseconds: 300),
+              () => context.read<FavoritesBloc>().add(InitFavorites()),
+            ),
+            child: Scaffold(
+              extendBodyBehindAppBar: true,
+              body: Container(
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    image:
+                        AssetImage("assets/images/background_favorites.jpeg"),
+                    fit: BoxFit.cover,
+                    opacity: 0.5,
+                  ),
                 ),
-              ),
-              child: state is FavoritesAreLoading
-                  ? const Center(
-                      child: CircularProgressIndicator(),
-                    )
-                  : state is FavoritesAreEmpty
-                      ? _EmptyView()
-                      : CustomScrollView(
-                          slivers: [
-                            const SliverToBoxAdapter(
-                              child: SizedBox(height: 40),
-                            ),
-                            SliverToBoxAdapter(
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Text(
-                                  S
-                                      .of(context)
-                                      .favoritesCount(state.list!.length),
-                                  style: AppTextStyle.s18w600
-                                      .copyWith(color: AppColors.purple400),
-                                ),
+                child: state is FavoritesAreLoading
+                    ? const Center(
+                        child: CircularProgressIndicator(),
+                      )
+                    : state is FavoritesAreEmpty
+                        ? _EmptyView()
+                        : CustomScrollView(
+                            slivers: [
+                              const SliverToBoxAdapter(
+                                child: SizedBox(height: 40),
                               ),
-                            ),
-                            SliverPadding(
-                              padding: const EdgeInsets.all(20.0),
-                              sliver: SliverList(
-                                delegate: SliverChildBuilderDelegate(
-                                  childCount: state.list!.length,
-                                  (context, index) => AnimeListItem(
-                                    anime: state.list![index],
-                                    rootPath: AppRoutes.favorites,
+                              SliverToBoxAdapter(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(20.0),
+                                  child: Text(
+                                    S
+                                        .of(context)
+                                        .favoritesCount(state.list!.length),
+                                    style: AppTextStyle.s18w600
+                                        .copyWith(color: AppColors.purple400),
                                   ),
                                 ),
                               ),
-                            ),
-                            const SliverToBoxAdapter(
-                              child: SizedBox(height: 70),
-                            ),
-                          ],
-                        ),
+                              SliverPadding(
+                                padding: const EdgeInsets.all(20.0),
+                                sliver: SliverList(
+                                  delegate: SliverChildBuilderDelegate(
+                                    childCount: state.list!.length,
+                                    (context, index) => AnimeListItem(
+                                      anime: state.list![index],
+                                      rootPath: AppRoutes.favorites,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              const SliverToBoxAdapter(
+                                child: SizedBox(height: 70),
+                              ),
+                            ],
+                          ),
+              ),
             ),
           );
         },

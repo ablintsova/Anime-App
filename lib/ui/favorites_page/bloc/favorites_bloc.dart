@@ -14,8 +14,10 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
   final MainRepository _repo;
 
   FavoritesBloc(this._repo) : super(const FavoritesAreLoading()) {
+    _setFavoritesListener();
     on<InitFavorites>(_onInitFavorites);
   }
+
 
   void _onInitFavorites(event, emit) async {
     final list = await _repo.favorites;
@@ -23,6 +25,16 @@ class FavoritesBloc extends Bloc<FavoritesEvent, FavoritesState> {
       emit(const FavoritesAreEmpty());
     } else {
       emit(FavoritesHaveLoaded(list: list));
+    }
+  }
+
+  void _setFavoritesListener() {
+    if (!_repo.favoritesStream.isClosed) {
+      _repo.favoritesStream.stream.listen((fromFavorites) {
+        if (!isClosed && !fromFavorites) {
+          add(InitFavorites());
+        }
+      });
     }
   }
 }

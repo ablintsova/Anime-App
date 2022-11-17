@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:anime_app/core/data/remote/http/api_provider.dart';
 import 'package:anime_app/core/models/AnimeModel.dart';
 import 'package:injectable/injectable.dart';
@@ -13,6 +15,8 @@ class MainRepository {
   List<GenreModel>? genres;
   List<AnimeModel>? topAnime;
   List<AnimeModel>? favoritesSync;
+  final StreamController<bool> favoritesStream =
+  StreamController.broadcast();
 
   Future<List<AnimeModel>?> get favorites async =>
       favoritesSync = await _storage.loadFavorites();
@@ -37,6 +41,9 @@ class MainRepository {
   bool checkIfFavorite({required int animeId}) =>
       favoritesSync?.map((anime) => anime.malId).contains(animeId) ?? false;
 
-  Future changeFavoriteStatus({required AnimeModel anime}) async =>
-      favoritesSync = await _storage.changeFavoriteStatus(anime);
+  Future changeFavoriteStatus({required AnimeModel anime, bool fromFavorites = false}) async {
+    favoritesSync = await _storage.changeFavoriteStatus(anime);
+    favoritesStream.sink.add(fromFavorites);
+    return favoritesSync;
+  }
 }

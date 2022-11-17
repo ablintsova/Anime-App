@@ -7,8 +7,13 @@ import '../../core/themes/app_colors.dart';
 
 class LikeButton extends StatefulWidget {
   final AnimeModel anime;
+  final bool fromFavorites;
 
-  const LikeButton({super.key, required this.anime});
+  const LikeButton({
+    super.key,
+    required this.anime,
+    this.fromFavorites = false,
+  });
 
   @override
   State<LikeButton> createState() => _LikeButtonState();
@@ -27,11 +32,15 @@ class _LikeButtonState extends State<LikeButton> {
 
   @override
   Widget build(BuildContext context) {
+    isFavorite = repo.checkIfFavorite(animeId: widget.anime.malId);
     return GestureDetector(
       onTap: () {
         setState(() {
           isFavorite = !isFavorite;
-          repo.changeFavoriteStatus(anime: widget.anime);
+          repo.changeFavoriteStatus(
+            anime: widget.anime,
+            fromFavorites: widget.fromFavorites,
+          );
         });
       },
       child: Icon(
